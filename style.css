@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+  background-color: rgb(34, 29, 28);
 }
 .headers{
   display: flex;
