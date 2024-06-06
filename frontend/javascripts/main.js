@@ -120,26 +120,29 @@ const data = [
     group: "Kolkata",
   },
 ];
-const groupToColor={
-  "Mumbai":"red",
-  "Delhi":"yellow",
-  "Kolkata":"skyblue"
-}
-async function displayData(){
+
+const groupToColor = {
+  "Mumbai": "red",
+  "Delhi": "yellow",
+  "Kolkata": "skyblue"
+};
+
+async function displayData() {
   let html = document.querySelector(".parcel-data");
-  let htmlData ='';
-  for(let i = 0 ;i < data.length;i++ ){
-htmlData += `<div class="name-parcel " id="parcel` + i + `"><p>${data[i].name}</p><p class="parcel-id" style=background-color:${groupToColor[data[i].group]}>${data[i].id}</p></div>`
+  let htmlData = '';
+  for (let i = 0; i < data.length; i++) {
+    htmlData += `<div class="name-parcel" id="parcel${data[i].id}"><p>${data[i].name}</p><p class="parcel-id" style="background-color:${groupToColor[data[i].group]}">${data[i].id}</p></div>`;
   }
   html.innerHTML = htmlData;
+  data.forEach(item => {
+    document.getElementById(`parcel${item.id}`).addEventListener("click", function() {
+      document.getElementById(`parcel${this.id}`).element.classList.add("selected-parcel")
+    });
+  });
 }
-displayData()
-{/* <link id="foo" onclick="doWithThisElement(this.id)" /> */}
-document.querySelector(".final").addEventListener("click",()=>{
-  console.log(data)
-});
-document.querySelector(`parcel${id}`).addEventListener("click",()=>{
-  const id = this.id;
 
- 
+displayData();
+
+document.querySelector(".final").addEventListener("click", () => {
+  console.log(data);
 });

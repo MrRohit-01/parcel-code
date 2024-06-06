@@ -144,3 +144,9 @@ padding: 1rem 2rem;
   cursor: pointer;
   text-align: center ;
 }
+#city{
+  color: white;
+  font-size: medium;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  }
