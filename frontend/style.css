@@ -14,6 +14,7 @@
   margin-bottom: 5rem;
   text-align: center;
   width: screen;
+  font-size: larger;
 }
 .head{
   padding-top: 0.5rem;
@@ -36,16 +37,33 @@ flex-grow: 2;
   margin-top: 1rem;
   color: white;
   display: flex;
-  gap: 5%;
   overflow-x: scroll;
   scrollbar-color: skyblue  rgb(34, 29, 28);
   scrollbar-width: thin;
 }
-.parcel{
-  margin: 1rem;
-  padding: 0.5rem 1rem 1rem 0.5rem;
+.name-parcel{
+  /* padding: 0rem 1rem 0rem 1rem; */
+  
+  text-align: center;
   
 }
+.selected-parcel{
+  border: 3px solid skyblue;
+
+}
+
+.parcel-id{
+
+  background-color: inherit;
+  padding: 0.4rem 4rem 0.4rem 4rem;
+  border: 3px black solid;
+  color: black;
+  font-size: large;
+  cursor: pointer;
+
+  
+}
+ 
 .content{
   display: flex;
   width: 100%;
@@ -64,8 +82,18 @@ flex-grow: 2;
   border: 2px solid white;
  width: 35rem;
   height: 15rem;
+color: white;
+font-size: x-large;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: start;
+padding-left: 3.5rem;
+padding-bottom: 2rem;
+
 
 }
+
 .color-details{
  width: 35rem;
   height: 25rem;
@@ -82,7 +110,7 @@ color: white;
 display: flex;
 justify-content: space-between;
 gap:1rem;
-padding: 1.5rem 5rem;
+padding: 1.5rem 0rem;
 padding-bottom: 0rem
 
 }
@@ -106,7 +134,7 @@ padding-bottom: 0rem
 .footers{
   display: flex;
   gap:2rem;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: larger;
   border-radius:5px;
 }
@@ -114,4 +142,5 @@ padding-bottom: 0rem
 padding: 1rem 2rem;
   background-color: aquamarine;
   cursor: pointer;
+  text-align: center ;
 }
