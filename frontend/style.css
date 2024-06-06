@@ -3,32 +3,115 @@
   padding: 0;
   background-color: rgb(34, 29, 28);
 }
+.wrapper{
+  padding: 1rem 2rem 1rem 2rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 .headers{
   display: flex;
-  justify-content: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  text-align: center;
   width: screen;
-  margin: 5rem;
 }
 .head{
-  padding-left: 12%;
-  padding-right: 12%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-weight: 600;
 }
 .one{
 background-color: red;
+flex-grow: 2;
 }
 .two{
 background-color: yellow;
+flex-grow: 1;
 }
 .three{
 background-color: skyblue;
+flex-grow: 2;
 }
 .parcel-data{
   margin-top: 1rem;
   color: white;
+  display: flex;
+  gap: 5%;
+  overflow-x: scroll;
+  scrollbar-color: skyblue  rgb(34, 29, 28);
+  scrollbar-width: thin;
 }
 .parcel{
+  margin: 1rem;
+  padding: 0.5rem 1rem 1rem 0.5rem;
   
+}
+.content{
+  display: flex;
+  width: 100%;
+  margin-top: 5rem;
+
+  justify-content:space-between;
+  text-align: center;
+}
+.select-name{
+  font-size: 2.5rem;
+  color: white;
+  padding-bottom: 3rem;
+  text-align: start;
+}
+.select-details{
+  border: 2px solid white;
+ width: 35rem;
+  height: 15rem;
+
+}
+.color-details{
+ width: 35rem;
+  height: 25rem;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  
+}
+.color{
+font-size: 1.5rem;
+color: white;
+display: flex;
+justify-content: space-between;
+gap:1rem;
+padding: 1.5rem 5rem;
+padding-bottom: 0rem
+
+}
+.box{
+  margin-left: 2rem;
+  height: 2rem;
+  width: 2rem;
+  background-color: aqua
+  
+}
+.b1{
+  background-color: red;
+}
+.b2{
+  background-color: yellow;
+}
+.b3{
+  background-color: skyblue;
+}
+
+.footers{
+  display: flex;
+  gap:2rem;
+  justify-content: space-around;
+  font-size: larger;
+  border-radius:5px;
+}
+.btn{
+padding: 1rem 2rem;
+  background-color: aquamarine;
+  cursor: pointer;
 }
