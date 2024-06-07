@@ -1,4 +1,4 @@
-const data = [
+let data = [
   {
     id: 10,
     name: "PARCEL1",
@@ -122,27 +122,161 @@ const data = [
 ];
 
 const groupToColor = {
-  "Mumbai": "red",
-  "Delhi": "yellow",
-  "Kolkata": "skyblue"
+  Mumbai: "red",
+  Delhi: "yellow",
+  Kolkata: "skyblue",
 };
+let indexData;
+let nextId = Math.max(...data.map((item) => item.id)) + 1;
 
-async function displayData() {
-  let html = document.querySelector(".parcel-data");
-  let htmlData = '';
-  for (let i = 0; i < data.length; i++) {
-    htmlData += `<div class="name-parcel" id="parcel${data[i].id}"><p>${data[i].name}</p><p class="parcel-id" style="background-color:${groupToColor[data[i].group]}">${data[i].id}</p></div>`;
+function displayData() {
+  const html = document.querySelector(".parcel-data");
+  let htmlData = "";
+
+  for (const element of data) {
+    htmlData += `
+      <div class="name-parcel" id="parcel${element.id}">
+        <p>${element.name}</p>
+        <p class="parcel-id" style="background-color:${
+          groupToColor[element.group]
+        }">${element.id}</p>
+      </div>
+    `;
   }
+
   html.innerHTML = htmlData;
-  data.forEach(item => {
-    document.getElementById(`parcel${item.id}`).addEventListener("click", function() {
-      document.getElementById(`parcel${this.id}`).element.classList.add("selected-parcel")
-    });
+
+  data.forEach((item) => {
+    document
+      .getElementById(`parcel${item.id}`)
+      .addEventListener("click", function () {
+        const currentlySelected = document.querySelector(".selected-parcel");
+        if (currentlySelected) {
+          currentlySelected.classList.remove("selected-parcel");
+          indexData = null;
+        }
+        if (currentlySelected == this) {
+          document.querySelector(".display-name").innerHTML = ``;
+        }
+        if (currentlySelected !== this) {
+          this.classList.add("selected-parcel");
+          const id = parseInt(this.id.replace("parcel", " "));
+          indexData = data.find((r) => r.id == id);
+          document.querySelector(
+            ".display-name"
+          ).innerHTML = `${indexData.name}`;
+        }
+      });
   });
 }
 
 displayData();
 
+
+
+
+function newParcel() {
+
+  const name = document.querySelector(".input-name").value.toUpperCase();
+  const group = document.querySelector("#city").value;
+
+  if (!name || !group) {
+    alert("Please provide both name and group");
+    return;
+  }
+
+  if(!indexData){
+    alert("select any parcel first")
+    return;
+  }
+
+  const index = data.findIndex((item) => item === indexData);
+
+  const newParcel = {
+    id: nextId++,
+    name: name,
+    sequence: index,
+    group: group,
+  };
+
+  return { newParcel, index };
+
+}
+
+
+document.querySelector(".add-after").addEventListener("click", () => {
+
+  const newParcelData = newParcel();
+
+  if (newParcelData) {
+    const { newParcel, index } = newParcelData;
+    data.splice(index + 1 , 0, { ...newParcel, sequence: index +1 });
+    for (let i = index + 1; i < data.length; i++) {
+      data[i].sequence = i + 1;
+    }
+
+    document.querySelector(".input-name").value = ``;
+    document.querySelector("#city").value = ``;
+
+    displayData();
+  }
+
+});
+
+
+
+document.querySelector(".add-before").addEventListener("click", () => {
+
+  const newParcelData = newParcel();
+    
+  if (newParcelData) {
+    const { newParcel, index } = newParcelData;
+    data.splice(index, 0, { ...newParcel, sequence: index});
+
+    for (let i = index; i < data.length; i++) {
+      data[i].sequence = i + 1;
+    }
+
+    document.querySelector(".input-name").value = ``;
+    document.querySelector("#city").value = ``;
+
+    displayData();
+  }
+});
+
+
+document.querySelector(".replace").addEventListener("click", () => {
+
+  const newParcelData = newParcel();
+
+
+  if (newParcelData) {
+    const { newParcel, index } = newParcelData;
+    data[index] = newParcel;
+  data.splice(index+1,0)
+
+    document.querySelector(".input-name").value = ``;
+    document.querySelector("#city").value = ``;
+
+    displayData();
+  }
+});
+
+document.querySelector(".delete").addEventListener("click", () => {
+
+  if (!indexData) {
+    alert("select a Parcel");
+  }
+
+  const index = data.findIndex((item) => item === indexData);
+
+  data.splice(index,1)
+  displayData();
+});
+
+
 document.querySelector(".final").addEventListener("click", () => {
+
   console.log(data);
+
 });
