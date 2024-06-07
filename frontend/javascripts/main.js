@@ -147,17 +147,19 @@ function displayData() {
   html.innerHTML = htmlData;
 
   data.forEach((item) => {
-    document
-      .getElementById(`parcel${item.id}`)
-      .addEventListener("click", function () {
+    document.getElementById(`parcel${item.id}`).addEventListener("click", function () {
+
         const currentlySelected = document.querySelector(".selected-parcel");
+
         if (currentlySelected) {
           currentlySelected.classList.remove("selected-parcel");
           indexData = null;
         }
+
         if (currentlySelected == this) {
           document.querySelector(".display-name").innerHTML = ``;
         }
+
         if (currentlySelected !== this) {
           this.classList.add("selected-parcel");
           const id = parseInt(this.id.replace("parcel", " "));
@@ -172,11 +174,7 @@ function displayData() {
 
 displayData();
 
-
-
-
 function newParcel() {
-
   const name = document.querySelector(".input-name").value.toUpperCase();
   const group = document.querySelector("#city").value;
 
@@ -185,13 +183,13 @@ function newParcel() {
     return;
   }
 
-  if(!indexData){
-    alert("select any parcel first")
+  if (!indexData) {
+    alert("select any parcel first");
     return;
   }
 
   const index = data.findIndex((item) => item === indexData);
-
+  indexData = '';
   const newParcel = {
     id: nextId++,
     name: name,
@@ -200,17 +198,14 @@ function newParcel() {
   };
 
   return { newParcel, index };
-
 }
 
-
 document.querySelector(".add-after").addEventListener("click", () => {
-
   const newParcelData = newParcel();
 
   if (newParcelData) {
     const { newParcel, index } = newParcelData;
-    data.splice(index + 1 , 0, { ...newParcel, sequence: index +1 });
+    data.splice(index + 1, 0, { ...newParcel, sequence: index + 1 });
     for (let i = index + 1; i < data.length; i++) {
       data[i].sequence = i + 1;
     }
@@ -220,18 +215,14 @@ document.querySelector(".add-after").addEventListener("click", () => {
 
     displayData();
   }
-
 });
 
-
-
 document.querySelector(".add-before").addEventListener("click", () => {
-
   const newParcelData = newParcel();
-    
+
   if (newParcelData) {
     const { newParcel, index } = newParcelData;
-    data.splice(index, 0, { ...newParcel, sequence: index});
+    data.splice(index, 0, { ...newParcel, sequence: index });
 
     for (let i = index; i < data.length; i++) {
       data[i].sequence = i + 1;
@@ -244,16 +235,13 @@ document.querySelector(".add-before").addEventListener("click", () => {
   }
 });
 
-
 document.querySelector(".replace").addEventListener("click", () => {
-
   const newParcelData = newParcel();
-
 
   if (newParcelData) {
     const { newParcel, index } = newParcelData;
     data[index] = newParcel;
-  data.splice(index+1,0)
+    data.splice(index + 1, 0);
 
     document.querySelector(".input-name").value = ``;
     document.querySelector("#city").value = ``;
@@ -263,20 +251,16 @@ document.querySelector(".replace").addEventListener("click", () => {
 });
 
 document.querySelector(".delete").addEventListener("click", () => {
-
   if (!indexData) {
     alert("select a Parcel");
   }
 
   const index = data.findIndex((item) => item === indexData);
 
-  data.splice(index,1)
+  data.splice(index, 1);
   displayData();
 });
 
-
 document.querySelector(".final").addEventListener("click", () => {
-
   console.log(data);
-
 });
