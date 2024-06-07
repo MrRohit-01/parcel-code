@@ -3,39 +3,6 @@
   padding: 0;
   background-color: rgb(34, 29, 28);
 }
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-overflow-x: hidden;
-}
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #f0f0f0;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: height 0.3s, background-color 0.3s;
-}
-.content {
-    padding-top: 60px; /* Adjust based on header height */
-}
-.name-parcel.red {
-    background-color: red;
-}
-.name-parcel.yellow {
-    background-color: yellow;
-}
-.name-parcel.skyblue {
-    background-color: skyblue;
-}
-/* //data */
-
 
 
 .wrapper {
@@ -43,11 +10,13 @@ overflow-x: hidden;
   margin-left: 10%;
   margin-right: 10%;
 }
+
 @media only screen and (max-width: 1000px) {
   .wrapper {
     margin: 0rem;
   }
 }
+
 .headers {
   display: flex;
   margin-top: 5rem;
@@ -115,7 +84,7 @@ overflow-x: hidden;
   display: flex;
   width: 100%;
   margin-top: 5rem;
-flex-wrap: wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   text-align: center;
 }
@@ -148,8 +117,9 @@ flex-wrap: wrap;
 
 
 }
+
 @media only screen and (max-width: 650px) {
-  .select-details{
+  .select-details {
     height: auto;
     width: auto;
     gap: 2rem;
@@ -158,24 +128,27 @@ flex-wrap: wrap;
     padding-right: 1%;
   }
 }
-.input-name{
-   margin-left: 0.5rem;
-   padding: 0.5rem 1rem;
-   font-size: medium;
-   color: aqua;
-   border: 2px solid rgb(255, 255, 255);
-   border-radius: 20px;
-   outline-color: aqua;
-   text-transform:uppercase;
+
+.input-name {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: medium;
+  color: aqua;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  outline-color: aqua;
+  text-transform: uppercase;
 }
+
 @media only screen and (max-width: 650px) {
-  .select-details{
+  .select-details {
     height: auto;
     width: auto;
     gap: 2rem;
     padding-top: 10%;
   }
 }
+
 .color-details {
   width: 35rem;
   height: 25rem;
@@ -223,13 +196,14 @@ flex-wrap: wrap;
   font-size: larger;
   border-radius: 5px;
   flex-wrap: wrap
-  
 }
+
 @media only screen and (max-width: 440px) {
-  .footers{
+  .footers {
     flex-direction: column;
-  }  
+  }
 }
+
 .btn {
   padding: 1rem 2rem;
   background-color: aquamarine;
