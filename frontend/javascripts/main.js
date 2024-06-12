@@ -1,4 +1,4 @@
-let data1 = [
+let data = [
   {
     id: 10,
     name: "PARCEL1",
@@ -131,9 +131,8 @@ let nextId = Math.max(...data.map((item) => item.id)) + 1;
 
 function displayData() {
   const html = document.querySelector(".parcel-data");
-  let htmlData = "";
-let data = axois.get("http://localhost:3000")
-  for (const element of data.data) {
+  let htmlData = ""
+  for (const element of data) {
     htmlData += `
       <div class="name-parcel" id="parcel${element.id}">
         <p>${element.name}</p>
