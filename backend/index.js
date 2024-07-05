@@ -130,4 +130,16 @@ app.get("/", function (req, res) {
     data
   });
 });
-app.listen(3000);
+
+app.get("/color",function(req,res){
+  const groupToColor = {
+    Mumbai: "red",
+    Delhi: "yellow",
+    Kolkata: "skyblue",
+  };
+  res.json({
+    groupToColor
+  })
+})
+
+app.listen(3001);
